@@ -14,9 +14,11 @@ IPAddress server_addr(SECRET_IP); // IP of the MySQL *server* here
 char user[] = SECRET_USERNAME; // MySQL user login username
 char password[] = SECRET_PASSWORD; // MySQL user login password
 
-WiFiSSLClient client;
+WiFiClient client; // Change this from WiFiSSLClient -> WiFiClient if you DO NOT use SSL on API
 
-WiFiClient sqlClient;
+int port = 80; // Change this from 443 -> 80 if you DO NOT use SSL on API
+
+WiFiClient sqlClient; // MySQL does not support SSL protocol
 
 MySQL_Connection conn((Client *)&sqlClient);
 
@@ -24,9 +26,9 @@ const int MPU_addr=0x68; // I2C address of the MPU-6050
 int16_t AcX,AcY,AcZ,Tmp,GyX,GyY,GyZ;
 
 long randNumber; // Random Pokemon ID
-long rollCatch;
+long rollCatch; // Roll a chance to catch a Pokemon
 
-char INSERT_DATA[] = "INSERT INTO arduinomon.catches (pokemon_id) VALUES (%d)"; // Insert generated Pokemon
+char INSERT_DATA[] = "INSERT INTO arduinomon.catches (pokemon_id) VALUES (%d)"; // Insert generated Pokemon after successful catch
 char query[128];
 
 void setup() {
@@ -63,14 +65,6 @@ void setup() {
     delay(1000);
   }
   Serial.println("Connected to wifi");
-
-  // connect to database
-  Serial.println("Attempting to connect to database...");
-  if (conn.connect(server_addr, 3306, user, password)) {
-    delay(1000);
-  } else {
-    Serial.println("Connection to database failed!");
-  }
 }
 
 void loop() {
@@ -106,7 +100,7 @@ void loop() {
 
     // Connect to HTTP server
     client.setTimeout(10000);
-    if (!client.connect("pokemon.habski.me", 443)) {
+    if (!client.connect(LOCAL_API, port)) {
       Serial.println(F("Connection failed"));
       return;
     }
@@ -114,10 +108,11 @@ void loop() {
     Serial.println(F("Connected!"));
 
     // Send HTTP request
-    client.print(F("GET /arduinomon/index.php?id="));
-    client.print(F(randNumber));
+    client.print(F("GET /api/index.php?id="));
+    client.print(randNumber);
     client.println(F(" HTTP/1.0"));
-    client.println(F("Host: pokemon.habski.me"));
+    client.print(F("Host: "));
+    client.println(LOCAL_API);
     client.println(F("Connection: close"));
     if (client.println() == 0) {
       Serial.println(F("Failed to send request"));
@@ -142,7 +137,7 @@ void loop() {
 
     // Allocate the JSON document
     // Use arduinojson.org/v6/assistant to compute the capacity.
-    const size_t capacity = JSON_OBJECT_SIZE(3) + 40;
+    const size_t capacity = JSON_OBJECT_SIZE(4) + 60;
     DynamicJsonDocument doc(capacity);
 
     // Parse JSON object
@@ -166,6 +161,14 @@ void loop() {
     Serial.print(F("Trying to catch with a chance of "));
     Serial.println(rollCatch);
     if (rollCatch <= doc["capture_rate"].as<long>()) {
+      // connect to database
+      Serial.println("Attempting to connect to database...");
+      if (conn.connect(server_addr, 3306, user, password)) {
+        delay(1000);
+      } else {
+        Serial.println("Connection to database failed!");
+      }
+
       // Initiate the query class instance
       MySQL_Cursor *cur_mem = new MySQL_Cursor(&conn);
 
