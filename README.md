@@ -48,6 +48,8 @@ Arduinomon bruker tre open source-prosjekter for å fungere:
 
 I tillegg henter vi data om Pokemon fra [PokeAPI](https://pokeapi.co/).
 
+3D modell for Pokeball kommer originalt [herifra](https://create.arduino.cc/projecthub/MarJoh/arduino-pokeball-5555d8#cad), men du kan også laste den ned fra repoet vårt her.
+
 ### Lisens
 Arduinomon er lisensiert under MIT License. [Se lisensen i den respektive filen for å se hva dette betyr](https://github.com/Zlimon/Arduinomon/blob/master/LICENSE).
 
