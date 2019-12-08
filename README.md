@@ -4,6 +4,8 @@
 
 Arduinomon er et simplifisert Pokemon spill som skal simulere aktiviteten å fange Pokemon med en Pokeball. Gjennom å ha muligheten til å kaste en fysisk ball er målet med "spillet" at man skal oppleve en simulering av at du som spiller skal kunne gå ute i fri luft og fange Pokemon. Dette prosjektet er inspirert av spillet Pokemon Go ut ifra dette aspektet, men med en liten tvist. Istedenfor å benytte en smarttelefon for å fange Pokemon, benytter du heller en fysisk gjenstand. I tillegg legger vi opp for ett system som skal la spillere kunne lagre sine fangede Pokemon, men også å kunne vise dem på en nettside.
 
+![](https://i.imgur.com/Lz7yYdV.jpg)
+
 ## Vårt mål
 
 Hovedmålet med Arduinomon er å kunne være ute i fri luft og fange Pokemon. For øyeblikket er prosjektet et konsept og ett forsøk på å legge grunnlag for å videreutvikle dette til noe større. En grundigere oversikt over hva vi ønsker å utvikle videre for Arduinomon finner du på [prosjekt](https://github.com/Zlimon/Arduinomon/projects) siden vår.
