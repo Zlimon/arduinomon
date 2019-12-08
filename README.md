@@ -10,11 +10,13 @@ Hovedmålet med Arduinomon er å kunne være ute i fri luft og fange Pokemon. Fo
 
 # Funksjonalitet
 
-Arduinomon består av to hovedkomponenter: en Pokeball og en nettside.
+Arduinomon består av to hovedkomponenter: en Pokeball og en nettside (webserver).
 
 Slik statusen på prosjektet er nå så brukes ballen til å "fange" Pokemon. Hvordan denne prosessen foregår kan du lese om i vår [systemarkitektur](https://github.com/Zlimon/Arduinomon/wiki/Systemarkitektur), men kort fortalt så genereres det en ID respektiv til en Pokemon. Hvis fangsten er suksessfull lagres den i databasen; som gjør at den kan vises på nettsiden. Ideer og planer for hvordan funksjonaliteten til ballen kan utvides er forklart på [prosjektsiden for ballen](https://github.com/Zlimon/Arduinomon/projects/1).
 
 Nettsiden sin hovedfunksjon for øyeblikket ganske simpel: å vise alle fangede Pokemon. En grundigere plan for hvordan nettsiden vil og kan utvides er beskrevet i [prosjektsiden for web serveren](https://github.com/Zlimon/Arduinomon/projects/2), men et eksempel på våre ideer er blant annet å implementere bruker system for å kunne differensiere hvem som har fanget hvilken Pokemon.
+
+Du kan lese mer om nettsiden og webserveren [her](https://github.com/Zlimon/Arduinomon/tree/master/webserver).
 
 ## Utstyr
 
@@ -37,12 +39,14 @@ _Du kan lese mer om disse i detaljer på [programvare og maskinvare siden](https
 Arduinomon kan settes opp på forskjellige måter avhengig av hvilke programvare og maskinvare du benytter. Ønsker du å følge vår oppskrift finner du den [her](https://github.com/Zlimon/Arduinomon/wiki/Oppsett-av-Arduinomon).
 
 ### Eksterne ressurser
-Arduinomon bruker to open source-prosjekter for å fungere:
+Arduinomon bruker tre open source-prosjekter for å fungere:
 * [bblanchon/ArduinoJson](https://github.com/bblanchon/ArduinoJson) - 📟 JSON library for Arduino and embedded C++. Simple and efficient. https://arduinojson.org
 * [arduino-libraries/WiFiNINA](https://github.com/arduino-libraries/WiFiNINA) - ArduinoJson is a C++ JSON library for Arduino and IoT (Internet Of Things).
 * [ChuckBell/MySQL_Connector_Arduino](https://github.com/ChuckBell/MySQL_Connector_Arduino) - Database connector library for using MySQL with your Arduino projects.
 
+I tillegg henter vi data om Pokemon fra [PokeAPI](https://pokeapi.co/).
+
 ### Lisens
 Arduinomon er lisensiert under MIT License. [Se lisensen i den respektive filen for å se hva dette betyr](https://github.com/Zlimon/Arduinomon/blob/master/LICENSE).
 
-Årsaken til dette er de eksterne ressursene Arduinomon bruker, og i tillegg eiendeler som Pokemon som er intellektuell eid og copyright av The Pokemon Company. Dette betyr at Arduinomon kun vil tilby innhold som er begrenset innenfor denne lisensen, og vil alltid forsikre at disse eiendelene eies av The Pokemon Company.
+Bakgrunnen til dette er de eksterne ressursene Arduinomon bruker, og i tillegg eiendeler som Pokemon som er intellektuell eid og copyright av The Pokemon Company. Dette betyr at Arduinomon kun vil tilby innhold som er begrenset innenfor denne lisensen, og vil alltid forsikre at disse eiendelene eies av The Pokemon Company.
