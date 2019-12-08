@@ -18,7 +18,7 @@ Slik statusen på prosjektet er nå så brukes ballen til å "fange" Pokemon. Hv
 
 Nettsiden sin hovedfunksjon for øyeblikket ganske simpel: å vise alle fangede Pokemon. En grundigere plan for hvordan nettsiden vil og kan utvides er beskrevet i [prosjektsiden for web serveren](https://github.com/Zlimon/Arduinomon/projects/2), men et eksempel på våre ideer er blant annet å implementere bruker system for å kunne differensiere hvem som har fanget hvilken Pokemon.
 
-Du kan lese mer om nettsiden og webserveren [her](https://github.com/Zlimon/Arduinomon/tree/master/webserver).
+Du kan lese mer om nettsiden, og webserveren og API'et [her](https://github.com/Zlimon/Arduinomon/tree/master/webserver).
 
 ## Utstyr
 
