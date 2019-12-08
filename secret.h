@@ -3,3 +3,4 @@
 #define SECRET_IP <database ip>
 #define SECRET_USERNAME "<database username>"
 #define SECRET_PASSWORD "<database password>"
+#define LOCAL_API "<host name>"
